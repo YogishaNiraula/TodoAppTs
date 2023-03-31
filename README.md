@@ -20,7 +20,7 @@ Navigate to [localhost:3000](http://localhost:3000). The app should be running a
 
 > - Build a simple todo app using indexedDB as database.
 
-1. Make tasks features:
+1. Make tasks with following features:
 
 - The app should have task title, description, completed status, task add, task delete and task edit feature.
 - Tasks should be in a list form.
