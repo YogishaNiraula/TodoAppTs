@@ -7,7 +7,14 @@ type DeleteProps = {
   project: {
     id: string;
     name: string;
-    tasks: [];
+    tasks: [
+      {
+        id: number;
+        completed: string;
+        title: string;
+        description: string;
+      },
+    ];
   };
 };
 
@@ -20,6 +27,7 @@ export default function ProjectDelete({ project }: DeleteProps) {
     <div>
       <button
         onClick={() => setOpen(true)}
+        data-testid="delete"
         className={`hover:bg-TodoRed hover:text-white text-gray-900 group flex w-full items-center rounded p-2 text-sm`}
       >
         <MdDeleteOutline className="mr-2 h-4 w-4" /> Delete

@@ -7,7 +7,14 @@ type EditProps = {
   projectData: {
     id: string;
     name: string;
-    tasks: [];
+    tasks: [
+      {
+        id: number;
+        completed: string;
+        title: string;
+        description: string;
+      },
+    ];
   };
 };
 
@@ -20,6 +27,7 @@ export default function ProjectEdit({ projectData }: EditProps) {
   return (
     <div>
       <button
+        data-testid="edit"
         onClick={() => setOpen(true)}
         className={`hover:bg-TodoRed hover:text-white text-gray-900 group flex w-full items-center rounded p-2 text-sm`}
       >

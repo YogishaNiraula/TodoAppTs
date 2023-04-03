@@ -10,11 +10,15 @@ export default function ProjectAdd() {
   };
   return (
     <div>
-      <button type="button" onClick={() => setOpen(true)}>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        data-testid="dialog-button"
+      >
         <span className="sr-only">Add Project Button</span>
         <BsPlus />
       </button>
-      <Transition appear show={open} as={Fragment}>
+      <Transition appear show={open} as={Fragment} data-testid="mock-dialog">
         <Dialog
           as="div"
           className="relative z-10"
@@ -76,6 +80,7 @@ export default function ProjectAdd() {
                         Cancel
                       </button>
                       <button
+                        data-testid="add-button"
                         type="submit"
                         name="_type"
                         value="createProject"
