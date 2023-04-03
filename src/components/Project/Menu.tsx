@@ -8,7 +8,14 @@ type MenuProps = {
   project: {
     id: string;
     name: string;
-    tasks: [];
+    tasks: [
+      {
+        id: number;
+        completed: string;
+        title: string;
+        description: string;
+      },
+    ];
   };
 };
 
