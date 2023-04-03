@@ -69,23 +69,24 @@ export default function App() {
           <div className="flex items-center space-x-3">
             <ProjectAdd />
             {showNav ? (
-              <button onClick={() => setShowNav(false)}>
+              <button onClick={() => setShowNav(false)} data-testid="close">
                 <MdKeyboardArrowUp />
               </button>
             ) : (
-              <button onClick={() => setShowNav(true)}>
+              <button onClick={() => setShowNav(true)} data-testid="open">
                 <MdKeyboardArrowDown />
               </button>
             )}
           </div>
         </div>
         {showNav && (
-          <nav className="-ml-3">
+          <nav className="-ml-3" data-testid="nav">
             {projects?.length ? (
-              <ul>
+              <ul data-testid="project-item">
                 {projects?.map((project: any) => (
                   <li key={project.id}>
                     <NavLink
+                      data-testid={`project-${project.id}`}
                       to={`projects/${project.id}`}
                       className={`${
                         project?.id === projectId
