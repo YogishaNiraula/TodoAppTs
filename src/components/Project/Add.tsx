@@ -5,6 +5,8 @@ import { Dialog, Transition } from "@headlessui/react";
 
 export default function ProjectAdd() {
   const [open, setOpen] = useState(false);
+  const task_id = Math.floor(Math.random() * 1000);
+
   const onClear = () => {
     setOpen(false);
   };
@@ -55,7 +57,7 @@ export default function ProjectAdd() {
                       htmlFor="project_name"
                       className="text-base text-gray-500 my-2"
                     >
-                      Name
+                      Project Name
                     </label>
                     <input
                       type="text"
@@ -66,7 +68,49 @@ export default function ProjectAdd() {
                       className="bg-white text-black placeholder:text-gray-600 px-4 py-2 border border-gray-600 rounded my-2"
                       required
                     />
-
+                    <label
+                      htmlFor="task_name"
+                      className="text-base text-gray-500 my-2"
+                    >
+                      Task Name
+                    </label>
+                    <input
+                      type="text"
+                      aria-label="task-name"
+                      name="task_name"
+                      id="task_name"
+                      placeholder="Project Name"
+                      className="bg-white text-black placeholder:text-gray-600 px-4 py-2 border border-gray-600 rounded my-2"
+                      required
+                    />
+                    <label
+                      htmlFor="task_description"
+                      className="text-base text-gray-500 my-2"
+                    >
+                      Project Description
+                    </label>
+                    <textarea
+                      aria-label="task-description"
+                      name="task_description"
+                      id="task_description"
+                      placeholder="Task Description"
+                      className="bg-white text-black placeholder:text-gray-600 px-4 py-2 border border-gray-600 rounded my-2"
+                      required
+                    />
+                    <input
+                      type="text"
+                      hidden
+                      value={task_id}
+                      name="task_id"
+                      readOnly
+                    />
+                    <input
+                      type="text"
+                      hidden
+                      value="false"
+                      name="task_completed"
+                      readOnly
+                    />
                     <div className="flex space-x-4 justify-end my-4">
                       <button
                         onClick={() => setOpen(false)}

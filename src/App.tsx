@@ -20,8 +20,9 @@ import {
 import { z } from "zod";
 
 // schema for formData types
-const projectNameSchema = z.string();
-const projectIdSchema = z.string();
+const StringSchema = z.string();
+const ProjectIdSchema = z.string();
+const TaskIdSchema = z.number();
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -29,19 +30,33 @@ export async function action({ request }: ActionFunctionArgs) {
   switch (actionType) {
     case "createProject":
       let id = Math.random().toString(36).substring(2, 9);
-      let project_name = projectNameSchema.parse(formData.get("project_name"));
+      let project_name = StringSchema.parse(formData.get("project_name"));
+      const [task_id, task_name, task_completed, task_description] = [
+        TaskIdSchema.parse(Number(formData.get("task_id"))),
+        StringSchema.parse(formData.get("task_name")),
+        StringSchema.parse(formData.get("task_completed")),
+        StringSchema.parse(formData.get("task_description")),
+      ];
       const projectId = await createProject({
         id: id,
         project_name,
+        tasks: [
+          {
+            id: task_id,
+            title: task_name,
+            description: task_description,
+            completed: task_completed,
+          },
+        ],
       });
       return redirect(`/projects/${projectId}`);
     case "deleteProject":
-      await deleteProject(projectIdSchema.parse(formData.get("delete_id")));
+      await deleteProject(ProjectIdSchema.parse(formData.get("delete_id")));
       return redirect("/");
     case "editProject":
       const [edit_id, edit_name] = [
-        projectIdSchema.parse(formData.get("edit_id")),
-        projectNameSchema.parse(formData.get("edit_name")),
+        ProjectIdSchema.parse(formData.get("edit_id")),
+        StringSchema.parse(formData.get("edit_name")),
       ];
       await editProject({ id: edit_id, project_data: { name: edit_name } });
       return redirect(`/projects/${edit_id}`);
