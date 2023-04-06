@@ -1,7 +1,7 @@
 import { MdDeleteOutline } from "react-icons/md";
 import { Form } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 
 type DeleteProps = {
   project: {

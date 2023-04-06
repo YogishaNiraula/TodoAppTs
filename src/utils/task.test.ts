@@ -5,7 +5,13 @@ import { completeTask, createTask, deleteTask, editTask } from "./task";
 describe("Task functions", () => {
   beforeAll(async () => {
     await insertDataInDB();
-    await createProject({ id: "abc", project_name: "Project Test" });
+    await createProject({
+      id: "abc",
+      project_name: "Project Test",
+      tasks: [
+        { id: 123, title: "mno", description: "xyz", completed: "false" },
+      ],
+    });
   });
 
   it("creates a task", async () => {
@@ -18,8 +24,8 @@ describe("Task functions", () => {
         completed: "false",
       },
     });
-    expect(response.tasks.length).toBe(1);
-    expect(response.tasks[0].title).toBe("Task 1");
+    expect(response.tasks.length).toBe(2);
+    expect(response.tasks[1].title).toBe("Task 1");
   });
 
   it("edits a task", async () => {
