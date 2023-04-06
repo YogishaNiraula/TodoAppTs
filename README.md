@@ -38,7 +38,6 @@ Make tasks with following features:
 - User should be able to edit a task's title and description.
 - User should be able to delete a task.
 - User should be able to change the status of task completion.
- > - Completed task's title should be strike-through.
 - Use indexedDB to store user's tasks.
 
 ### 2. Projects
@@ -53,5 +52,6 @@ Make tasks with following features:
 
 ### Note
 1. All input fields in the form should have `required` validation before it can be submitted.
-2. For adding and editing features, make use of modal to display form.
+2. For adding and editing features, make use of modal or popup to display form.
+3. Completed task's title should be displayed in line through format.Eg. ~~This task needs to be completed.
 
