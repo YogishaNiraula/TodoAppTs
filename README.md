@@ -1,6 +1,6 @@
 # TodoAppTs
 
-A simple Todo App made with ###React-Typescript
+A simple Todo App made with React-Typescript
 
 ## Running the project
 
@@ -53,5 +53,5 @@ Make tasks with following features:
 ### Note
 1. All input fields in the form should have `required` validation before it can be submitted.
 2. For adding and editing features, make use of modal or popup to display form.
-3. Completed task's title should be displayed in line through format.Eg. ~~This task needs to be completed.
+3. Completed task's title should be displayed in line through format.Eg. <strike>This task needs to be completed.</strike>
 
