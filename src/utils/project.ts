@@ -1,17 +1,28 @@
 import { withProjectDB } from "./indexDB";
 
+type CreateProjectType = {
+  id: string;
+  project_name: string;
+  tasks: [
+    {
+      id: number;
+      title: string;
+      description: string;
+      completed: string;
+    },
+  ];
+};
+
 export async function createProject({
   id,
   project_name,
-}: {
-  id: string;
-  project_name: string;
-}) {
+  tasks,
+}: CreateProjectType) {
   return await withProjectDB(async (tx: any) => {
     await tx.store.add({
       id: id,
       name: project_name,
-      tasks: [],
+      tasks: tasks,
     });
     return id;
   });
